@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Piedra, Papel o Tijeras</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    
+    .container {
+      background: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    
+    h1 {
+      color: #333;
+      margin-bottom: 30px;
+    }
+    
+    .opciones {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      margin-bottom: 30px;
+    }
+    
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #667eea;
+      color: white;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: #764ba2;
+    }
+    
+    .resultado {
+      margin-top: 30px;
+      font-size: 18px;
+    }
+    
+    .puntuacion {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎮 Piedra, Papel o Tijeras</h1>
+    
+    <div class="opciones">
+      <button onclick="jugar('piedra')">🪨 Piedra</button>
+      <button onclick="jugar('papel')">📄 Papel</button>
+      <button onclick="jugar('tijeras')">✂️ Tijeras</button>
+    </div>
+    
+    <div class="resultado" id="resultado"></div>
+    <div class="puntuacion" id="puntuacion"></div>
+    <button onclick="reiniciar()" style="margin-top: 20px; background-color: #ff6b6b;">Reiniciar</button>
+  </div>
+
+  <script>
+    let puntos = { jugador: 0, computadora: 0 };
+    const opciones = ['piedra', 'papel', 'tijeras'];
+
+    function obtenerOpcionComputadora() {
+      return opciones[Math.floor(Math.random() * opciones.length)];
+    }
+
+    function determinarGanador(jugador, computadora) {
+      if (jugador === computadora) return 'Empate';
+      
+      if (
+        (jugador === 'piedra' && computadora === 'tijeras') ||
+        (jugador === 'papel' && computadora === 'piedra') ||
+        (jugador === 'tijeras' && computadora === 'papel')
+      ) {
+        return 'Ganaste';
+      }
+      
+      return 'Perdiste';
+    }
+
+    function jugar(opcionJugador) {
+      const opcionComputadora = obtenerOpcionComputadora();
+      const resultado = determinarGanador(opcionJugador, opcionComputadora);
+      
+      if (resultado === 'Ganaste') puntos.jugador++;
+      if (resultado === 'Perdiste') puntos.computadora++;
+      
+      document.getElementById('resultado').innerHTML = `
+        <strong>Tu opción:</strong> ${opcionJugador} <br>
+        <strong>Computadora:</strong> ${opcionComputadora} <br>
+        <h2>${resultado}</h2>
+      `;
+      
+      mostrarPuntuacion();
+    }
+
+    function mostrarPuntuacion() {
+      document.getElementById('puntuacion').innerHTML = `
+        Puntuación: Tú ${puntos.jugador} - Computadora ${puntos.computadora}
+      `;
+    }
+
+    function reiniciar() {
+      puntos = { jugador: 0, computadora: 0 };
+      document.getElementById('resultado').innerHTML = '';
+      document.getElementById('puntuacion').innerHTML = '';
+    }
+  </script>
+</body>
+</html>

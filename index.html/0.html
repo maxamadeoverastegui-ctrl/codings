@@ -1,0 +1,34 @@
+// Juego: Piedra, Papel o Tijeras
+const opciones = ['piedra', 'papel', 'tijeras'];
+
+function obtenerOpcionComputadora() {
+  return opciones[Math.floor(Math.random() * opciones.length)];
+}
+
+function determinarGanador(jugador, computadora) {
+  if (jugador === computadora) {
+    return 'Empate';
+  }
+  
+  if (
+    (jugador === 'piedra' && computadora === 'tijeras') ||
+    (jugador === 'papel' && computadora === 'piedra') ||
+    (jugador === 'tijeras' && computadora === 'papel')
+  ) {
+    return '¡Ganaste!';
+  }
+  
+  return 'Perdiste';
+}
+
+function jugar(opcionJugador) {
+  const opcionComputadora = obtenerOpcionComputadora();
+  const resultado = determinarGanador(opcionJugador, opcionComputadora);
+  
+  console.log(`Tu opción: ${opcionJugador}`);
+  console.log(`Computadora: ${opcionComputadora}`);
+  console.log(`${resultado}`);
+}
+
+// Ejemplo de uso:
+jugar('piedra');

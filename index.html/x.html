@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flor Azul HD con Césped Completo</title>
+
+<style>
+
+    body {
+        margin: 0;
+        background: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
+    /* Animación de viento suave */
+    @keyframes sway {
+        0% { transform: rotate(-2deg); }
+        100% { transform: rotate(2deg); }
+    }
+
+    @keyframes swayGrass {
+        0% { transform: skewX(0deg); }
+        100% { transform: skewX(4deg); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-12px); }
+    }
+
+    /* Contenedor principal */
+    .flower-container {
+        position: relative;
+        animation: sway 4s ease-in-out infinite alternate;
+        transform-origin: bottom;
+    }
+
+    /* ==========================================================
+        🌿 CÉSPED PUNTIAGUDO DE PUNTA A PUNTA (ULTRA DETALLADO)
+       ========================================================== */
+    .grass-area {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        height: 150px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        padding: 0 20px;
+        animation: swayGrass 3s infinite alternate ease-in-out;
+    }
+
+    .blade {
+        width: 0px;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 100px solid #ff352a;
+        filter: drop-shadow(0 0 10px #2aa6ff);
+        animation: swayGrass 2s infinite alternate ease-in-out;
+        transform-origin: bottom;
+    }
+
+    .blade:nth-child(odd) {
+        border-bottom-color: #19d95c;
+        height: 120px;
+    }
+
+    .blade:nth-child(3n) {
+        border-bottom-color: #32ff83;
+        border-bottom-width: 130px;
+    }
+
+    /* ==========================================================
+        🌱 TALLO GRANDE Y DETALLADO
+       ========================================================== */
+    .stem {
+        width: 20px;
+        height: 380px;
+        background: linear-gradient(to top, #064f2a, #16c26d);
+        border-radius: 20px;
+        margin: 0 auto;
+        position: relative;
+        filter: drop-shadow(0 0 15px #16c26d);
+    }
+
+    /* ==========================================================
+        🍃 HOJAS MÁS GRANDES Y DETALLADAS
+       ========================================================== */
+    .leaf {
+        position: absolute;
+        width: 150px;
+        height: 70px;
+        background: linear-gradient(135deg, #10b85d, #8fffcb);
+        border-radius: 100% 0;
+        filter: drop-shadow(0 0 15px #23ff93);
+        top: 160px;
+        animation: sway 3s infinite alternate ease-in-out;
+    }
+
+    .leaf.left {
+        left: -130px;
+        transform: rotate(35deg);
+    }
+
+    .leaf.right {
+        right: -130px;
+        transform: rotate(-35deg);
+        animation-delay: 1.2s;
+    }
+
+    .flower {
+        position: absolute;
+        bottom: 340px;
+        left: 50%;
+        transform: translateX(-40%);
+        width: 310px;
+        height: 310px;
+        animation: float 4s infinite ease-in-out alternate;
+    }
+
+    .petal {
+        position: absolute;
+        width: 180px;
+        height: 220px;
+        background: linear-gradient(135deg, #1fa4ff, #7cd8ff);
+        border-radius: 100% 60% 100% 60%;
+        filter: drop-shadow(0 0 30px #1fa4ff);
+        transform-origin: bottom center;
+    }
+
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(60deg); }
+    .petal:nth-child(3) { transform: rotate(120deg); }
+    .petal:nth-child(4) { transform: rotate(180deg); }
+    .petal:nth-child(5) { transform: rotate(240deg); }
+    .petal:nth-child(6) { transform: rotate(300deg); }
+
+    .center {
+        width: 120px;
+        height: 120px;
+        background: radial-gradient(circle, #ffffff 0%, #a7e6ff 40%, #1fa4ff 100%);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 50px #8bd7ff;
+    }
+
+</style>
+</head>
+
+<body>
+
+    <!-- 🌿 Césped de punta a punta -->
+    <div class="grass-area">
+        <!-- 60 hojas de césped puntiagudo -->
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+    </div>
+
+    <!-- 🌱 Tallo y hojas -->
+    <div class="flower-container">
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+
+        <!-- 🌸 Flor grande -->
+        <div class="flower">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="center"></div>
+        </div>
+    </div>
+
+</body>
+</html>

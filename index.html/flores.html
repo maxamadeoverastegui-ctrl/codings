@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flores Neón 3D</title>
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+    }
+    body{
+        background:#000;
+        overflow:hidden;
+        height:100vh;
+        width:100vw;
+        perspective:1000px;
+        font-family:Arial, sans-serif;
+    }
+
+    /* CONTENEDOR 3D */
+    .scene {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        animation: rotateScene 25s linear infinite;
+    }
+
+    @keyframes rotateScene {
+        0% { transform: rotateY(0deg); }
+        100% { transform: rotateY(360deg); }
+    }
+
+    /* FLORES */
+    .flower {
+        position:absolute;
+        width:40px;
+        height:40px;
+        transform-style:preserve-3d;
+        animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0px); }
+        50% { transform: translateY(-40px); }
+        100% { transform: translateY(0px); }
+    }
+
+    /* PÉTALOS NEÓN */
+    .petal {
+        position:absolute;
+        width:100%;
+        height:100%;
+        border-radius:50%;
+        background: radial-gradient(circle, rgba(255,140,0,1), rgba(255,90,0,0.6), transparent 70%);
+        box-shadow:0 0 15px rgba(255,120,0,0.9), 0 0 30px rgba(255,120,0,0.9);
+        transform-origin:center;
+    }
+
+    /* Hojas verdes 3D */
+    .leaf {
+        position:absolute;
+        width:50px;
+        height:20px;
+        background: radial-gradient(circle, #00ff6a, #009944);
+        border-radius:20px;
+        box-shadow:0 0 10px #00ff6a;
+        transform: rotateZ(45deg) translate(-5px, 35px);
+    }
+
+</style>
+</head>
+<body>
+
+<div class="scene" id="scene"></div>
+
+<script>
+    const scene = document.getElementById("scene");
+
+    // CREAR FLORES
+    for(let i=0; i<60; i++){
+        const flower = document.createElement("div");
+        flower.className = "flower";
+
+        // POSICIÓN ALEATORIA 3D
+        flower.style.left = Math.random()*100 + "vw";
+        flower.style.top = Math.random()*100 + "vh";
+        flower.style.transform = `translateZ(${(Math.random()*600)-300}px)`;
+
+        // CREAR 5 PÉTALOS
+        for(let p=0; p<5; p++){
+            const petal = document.createElement("div");
+            petal.className = "petal";
+            petal.style.transform = `rotateZ(${p*72}deg)`;
+            flower.appendChild(petal);
+        }
+
+        // HOJA
+        const leaf = document.createElement("div");
+        leaf.className = "leaf";
+        flower.appendChild(leaf);
+
+        scene.appendChild(flower);
+    }
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Girasoles Animados</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        .container {
+            display: flex;
+            gap: 60px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .girasol {
+            position: relative;
+            width: 250px;
+            height: 400px;
+        }
+
+        /* TALLO */
+        .tallo {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 8px;
+            height: 200px;
+            background: linear-gradient(to top, #2d5016, #4a8c2a);
+            border-radius: 10px;
+            box-shadow: inset -2px 0 3px rgba(0, 0, 0, 0.3);
+        }
+
+        /* HOJAS */
+        .hoja {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            width: 40px;
+            height: 80px;
+            background: #4a8c2a;
+            border-radius: 50% 0;
+            transform-origin: bottom center;
+            animation: moveHoja 3s ease-in-out infinite;
+        }
+
+        .hoja:nth-child(2) {
+            left: 30%;
+            animation-delay: 0.2s;
+            transform: rotate(-45deg);
+        }
+
+        .hoja:nth-child(3) {
+            left: 70%;
+            animation-delay: 0.4s;
+            transform: rotate(45deg);
+        }
+
+        @keyframes moveHoja {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* CABEZA DEL GIRASOL */
+        .cabeza {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #FFD700, #FFA500);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), inset -5px -5px 10px rgba(0, 0, 0, 0.1);
+            animation: girar 20s linear infinite;
+        }
+
+        @keyframes girar {
+            from { transform: translateX(-50%) rotate(0deg); }
+            to { transform: translateX(-50%) rotate(360deg); }
+        }
+
+        /* PÉTALOS - 12 pétalos */
+        .petalos {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+        }
+
+        .petalos.doce .petal {
+            position: absolute;
+            width: 30px;
+            height: 80px;
+            background: linear-gradient(to bottom, #FFD700, #FFA500);
+            border-radius: 50% 50% 30% 30%;
+            left: 50%;
+            top: 0;
+            transform-origin: 50% 100px;
+            margin-left: -15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            animation: vibrar 1.5s ease-in-out infinite;
+        }
+
+        .petalos.doce .petal:nth-child(1) { transform: rotate(0deg); animation-delay: 0s; }
+        .petalos.doce .petal:nth-child(2) { transform: rotate(30deg); animation-delay: 0.1s; }
+        .petalos.doce .petal:nth-child(3) { transform: rotate(60deg); animation-delay: 0.2s; }
+        .petalos.doce .petal:nth-child(4) { transform: rotate(90deg); animation-delay: 0.3s; }
+        .petalos.doce .petal:nth-child(5) { transform: rotate(120deg); animation-delay: 0.4s; }
+        .petalos.doce .petal:nth-child(6) { transform: rotate(150deg); animation-delay: 0.5s; }
+        .petalos.doce .petal:nth-child(7) { transform: rotate(180deg); animation-delay: 0.6s; }
+        .petalos.doce .petal:nth-child(8) { transform: rotate(210deg); animation-delay: 0.7s; }
+        .petalos.doce .petal:nth-child(9) { transform: rotate(240deg); animation-delay: 0.8s; }
+        .petalos.doce .petal:nth-child(10) { transform: rotate(270deg); animation-delay: 0.9s; }
+        .petalos.doce .petal:nth-child(11) { transform: rotate(300deg); animation-delay: 1s; }
+        .petalos.doce .petal:nth-child(12) { transform: rotate(330deg); animation-delay: 1.1s; }
+
+        /* PÉTALOS - 14 pétalos */
+        .petalos.catorce .petal {
+            position: absolute;
+            width: 28px;
+            height: 75px;
+            background: linear-gradient(to bottom, #FFE135, #FF9500);
+            border-radius: 50% 50% 30% 30%;
+            left: 50%;
+            top: 0;
+            transform-origin: 50% 95px;
+            margin-left: -14px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            animation: ondular 2s ease-in-out infinite;
+        }
+
+        .petalos.catorce .petal:nth-child(1) { transform: rotate(0deg); animation-delay: 0s; }
+        .petalos.catorce .petal:nth-child(2) { transform: rotate(25.7deg); animation-delay: 0.1s; }
+        .petalos.catorce .petal:nth-child(3) { transform: rotate(51.4deg); animation-delay: 0.2s; }
+        .petalos.catorce .petal:nth-child(4) { transform: rotate(77.1deg); animation-delay: 0.3s; }
+        .petalos.catorce .petal:nth-child(5) { transform: rotate(102.8deg); animation-delay: 0.4s; }
+        .petalos.catorce .petal:nth-child(6) { transform: rotate(128.5deg); animation-delay: 0.5s; }
+        .petalos.catorce .petal:nth-child(7) { transform: rotate(154.2deg); animation-delay: 0.6s; }
+        .petalos.catorce .petal:nth-child(8) { transform: rotate(180deg); animation-delay: 0.7s; }
+        .petalos.catorce .petal:nth-child(9) { transform: rotate(205.8deg); animation-delay: 0.8s; }
+        .petalos.catorce .petal:nth-child(10) { transform: rotate(231.5deg); animation-delay: 0.9s; }
+        .petalos.catorce .petal:nth-child(11) { transform: rotate(257.2deg); animation-delay: 1s; }
+        .petalos.catorce .petal:nth-child(12) { transform: rotate(282.9deg); animation-delay: 1.1s; }
+        .petalos.catorce .petal:nth-child(13) { transform: rotate(308.6deg); animation-delay: 1.2s; }
+        .petalos.catorce .petal:nth-child(14) { transform: rotate(334.3deg); animation-delay: 1.3s; }
+
+        @keyframes vibrar {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.1); }
+        }
+
+        @keyframes ondular {
+            0%, 100% { transform: scaleY(1) rotate(var(--angle)); }
+            50% { transform: scaleY(1.15) rotate(var(--angle)); }
+        }
+
+        /* CENTRO DEL GIRASOL */
+        .centro {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            background: radial-gradient(circle at 30% 30%, #8B6914, #654321);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: inset 0 5px 10px rgba(0, 0, 0, 0.3), 0 5px 10px rgba(0, 0, 0, 0.2);
+            animation: latir 2s ease-in-out infinite;
+        }
+
+        @keyframes latir {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+
+        /* Semillas del centro */
+        .semilla {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #4a3728;
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        h1 {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            font-size: 28px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🌻 Girasoles Animados 🌻</h1>
+
+    <div class="container">
+        <!-- GIRASOL 1 - 12 pétalos -->
+        <div class="girasol">
+            <div class="petalos doce">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+            </div>
+            <div class="cabeza"></div>
+            <div class="centro">
+                <div class="semilla" style="top: 10px; left: 10px;"></div>
+                <div class="semilla" style="top: 10px; left: 20px;"></div>
+                <div class="semilla" style="top: 20px; left: 15px;"></div>
+                <div class="semilla" style="top: 20px; left: 25px;"></div>
+                <div class="semilla" style="top: 30px; left: 10px;"></div>
+                <div class="semilla" style="top: 30px; left: 25px;"></div>
+            </div>
+            <div class="tallo"></div>
+            <div class="hoja"></div>
+            <div class="hoja"></div>
+            <div class="hoja"></div>
+        </div>
+
+        <!-- GIRASOL 2 - 14 pétalos -->
+        <div class="girasol">
+            <div class="petalos catorce">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+            </div>
+            <div class="cabeza"></div>
+            <div class="centro">
+                <div class="semilla" style="top: 10px; left: 10px;"></div>
+                <div class="semilla" style="top: 10px; left: 20px;"></div>
+                <div class="semilla" style="top: 20px; left: 15px;"></div>
+                <div class="semilla" style="top: 20px; left: 25px;"></div>
+                <div class="semilla" style="top: 30px; left: 10px;"></div>
+                <div class="semilla" style="top: 30px; left: 25px;"></div>
+            </div>
+            <div class="tallo"></div>
+            <div class="hoja"></div>
+            <div class="hoja"></div>
+            <div class="hoja"></div>
+        </div>
+    </div>
+</body>
+</html>

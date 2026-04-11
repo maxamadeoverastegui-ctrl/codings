@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Flores Azules</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background: #000; /* Fondo negro elegante */
+    }
+
+    .flower {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        animation: float 10s linear infinite;
+        opacity: 0.8;
+    }
+
+    .petal {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: #2196F3; /* Azul */
+        border-radius: 50%;
+        filter: drop-shadow(0 0 10px #2196F3);
+    }
+
+    /* 4 pétalos girados */
+    .p1 { transform: rotate(0deg) translate(10px); }
+    .p2 { transform: rotate(90deg) translate(10px); }
+    .p3 { transform: rotate(180deg) translate(10px); }
+    .p4 { transform: rotate(270deg) translate(10px); }
+
+    @keyframes float {
+        0% {
+            transform: translateY(110vh) rotate(0deg);
+        }
+        100% {
+            transform: translateY(-10vh) rotate(720deg);
+        }
+    }
+</style>
+</head>
+<body>
+
+<script>
+// GENERADOR DE FLORES
+function createFlower() {
+    const flower = document.createElement("div");
+    flower.classList.add("flower");
+
+    // Posición random horizontal
+    flower.style.left = Math.random() * 100 + "vw";
+    flower.style.animationDuration = (8 + Math.random() * 7) + "s";
+
+    // Crear pétalos
+    ["p1", "p2", "p3", "p4"].forEach(p => {
+        const petal = document.createElement("div");
+        petal.classList.add("petal", p);
+        flower.appendChild(petal);
+    });
+
+    document.body.appendChild(flower);
+
+    // Borrar flor cuando termina
+    setTimeout(() => {
+        flower.remove();
+    }, 15000);
+}
+
+// Crear flores cada 300ms
+setInterval(createFlower, 300);
+</script>
+
+</body>
+</html>

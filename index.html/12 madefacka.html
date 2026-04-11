@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Flor Azul HD Completa</title>
+<style>
+
+    body {
+        margin: 0;
+        background: #000;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        overflow: hidden;
+    }
+
+    /* Animación general */
+    @keyframes sway {
+        0% { transform: rotate(-2deg); }
+        100% { transform: rotate(2deg); }
+    }
+
+    @keyframes float {
+        0% { transform: translateY(0); }
+        100% { transform: translateY(-10px); }
+    }
+
+    /* Contenedor principal */
+    .flower-container {
+        position: relative;
+        animation: sway 3s ease-in-out infinite alternate;
+    }
+
+    /* =======================
+       🌿  CÉSPED DETALLADO
+       =======================*/
+    .grass {
+        position: absolute;
+        bottom: 0;
+        width: 400px;
+        height: 120px;
+        display: flex;
+        justify-content: center;
+        gap: 6px;
+        filter: drop-shadow(0 0 10px #21ff66);
+    }
+
+    .blade {
+        width: 4px;
+        height: 80px;
+        background: linear-gradient(to top, #0a8a2f, #4cff8a);
+        border-radius: 20px;
+        animation: sway 2s infinite ease-in-out alternate;
+        transform-origin: bottom;
+    }
+
+    .blade:nth-child(3n) {
+        height: 100px;
+    }
+
+    .blade:nth-child(4n) {
+        height: 90px;
+    }
+
+    /* =======================
+       🌱  TALLO
+       =======================*/
+    .stem {
+        width: 15px;
+        height: 300px;
+        background: linear-gradient(to top, #0a572a, #1fa45a);
+        margin: 0 auto;
+        border-radius: 20px;
+        position: relative;
+        filter: drop-shadow(0 0 10px #1fa45a);
+    }
+
+    /* =======================
+       🍃  HOJAS
+       =======================*/
+    .leaf {
+        position: absolute;
+        width: 100px;
+        height: 50px;
+        background: linear-gradient(135deg, #0bbf58, #7effb1);
+        border-radius: 100% 0;
+        top: 120px;
+        filter: drop-shadow(0 0 10px #25ff9e);
+        animation: sway 2.5s infinite alternate;
+    }
+
+    .leaf.left {
+        left: -90px;
+        transform: rotate(30deg);
+    }
+
+    .leaf.right {
+        right: -90px;
+        transform: rotate(-30deg);
+        animation-delay: 1s;
+    }
+
+    /* =======================
+       🌸  FLOR
+       =======================*/
+    .flower {
+        position: absolute;
+        bottom: 260px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 230px;
+        height: 230px;
+        animation: float 3s infinite alternate ease-in-out;
+    }
+
+    .petal {
+        position: absolute;
+        width: 140px;
+        height: 170px;
+        background: linear-gradient(135deg, #1fa4ff, #74d0ff);
+        border-radius: 100% 60% 100% 60%;
+        filter: drop-shadow(0 0 25px #1fa4ff);
+        transform-origin: bottom center;
+    }
+
+    .petal:nth-child(1) { transform: rotate(0deg); }
+    .petal:nth-child(2) { transform: rotate(60deg); }
+    .petal:nth-child(3) { transform: rotate(120deg); }
+    .petal:nth-child(4) { transform: rotate(180deg); }
+    .petal:nth-child(5) { transform: rotate(240deg); }
+    .petal:nth-child(6) { transform: rotate(300deg); }
+
+    .center {
+        width: 90px;
+        height: 90px;
+        background: radial-gradient(circle, #ffffff 0%, #8edcff 50%, #1fa4ff 100%);
+        border-radius: 50%;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        box-shadow: 0 0 40px #71d9ff;
+    }
+
+</style>
+</head>
+
+<body>
+
+    <div class="flower-container">
+
+        <!-- 🌿 Césped -->
+        <div class="grass">
+            <!-- Mucho césped detallado -->
+            <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+            <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+            <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+            <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+            <div class="blade"></div><div class="blade"></div><div class="blade"></div><div class="blade"></div>
+        </div>
+
+        <!-- 🍃 Hojas -->
+        <div class="stem"></div>
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+
+        <!-- 🌸 Flor azul -->
+        <div class="flower">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="center"></div>
+        </div>
+    </div>
+
+</body>
+</html>
